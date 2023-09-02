@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <div id="app">
         <!-- text interpolation -->
         {{ message }}
+
+        <section>
+            <h2>Directives</h2>
+            <div>
+                <p>This uses the <span v-bind:class="vueClass">blue class</span> V</p>
+            </div>
+        </section>
+
     </div>
 
     <footer>
@@ -19,7 +27,8 @@
         const app= Vue.createApp({
             data() {
                 return {
-                    message: "Message showed successfully with Vue.js"
+                    message: "Message showed successfully with Vue.js",
+                    vueClass: "blue"
                 }
             }
         })
