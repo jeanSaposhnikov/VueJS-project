@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <footer>
+
+    </footer>
+    <!-- Lets browser interpret VUE code -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        const app= Vue.createApp({
+            data() {
+                return {
+                    message: "Message showed successfully with Vue.js"
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script>
+</body>
+</html>
