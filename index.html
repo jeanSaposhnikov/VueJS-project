@@ -13,6 +13,7 @@
             <h2>Directives</h2>
             <div>
                 <p>This uses the <span v-bind:class="vueClass">blue class</span> V</p>
+                <img v-bind:src="url" v-bind:width="icon">
             </div>
         </section>
 
@@ -21,6 +22,7 @@
     <footer>
 
     </footer>
+
     <!-- Lets browser interpret VUE code -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script>
@@ -28,7 +30,9 @@
             data() {
                 return {
                     message: "Message showed successfully with Vue.js",
-                    vueClass: "blue"
+                    vueClass: "blue",
+                    url:"img/vuejs-logo.png",
+                    icon:"100"
                 }
             }
         })
