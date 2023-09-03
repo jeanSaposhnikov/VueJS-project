@@ -39,9 +39,11 @@
                 </li>
             </ul>
             <ul>
-                <li v-for="x in food">
+                <li v-for="x in food" v-on:click="clickedFood=x.name">
                     {{"We need " + x.quantity + " "+ x.name}}
                 </li>
+
+                <p>You clicked on {{clickedFood}}</p>
             </ul>
         </section>
 
@@ -107,6 +109,7 @@
                     borders: "border: 1px dashed;",
                     lightState:false,
                     keys:0,
+                    clickedFood:"",
                 }
             }
         })
