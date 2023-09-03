@@ -44,6 +44,21 @@
                 </li>
             </ul>
         </section>
+
+        <section>
+            <h2>Events</h2>
+            <p>Nb of times clicked : {{clicks}}</p>
+            <input type="button" v-on:click="clicks++" value="click me">
+            <div v-bind:class="hoverClass" v-on:mouseover="mouse=true">
+                <p v-if="mouse=true">
+                    Hovering !
+                </p>
+
+                <p v-else>
+                    
+                </p>
+            </div>
+        </section>
     </div>
 
     <footer>
@@ -72,7 +87,10 @@
                             name:"oranges",
                             quantity:3
                         }
-                    ]
+                    ],
+                    clicks:0,
+                    hoverClass:"hover-section",
+                    mouse:false,
                 }
             }
         })
