@@ -49,14 +49,11 @@
             <h2>Events</h2>
             <p>Nb of times clicked : {{clicks}}</p>
             <input type="button" v-on:click="clicks++" value="click me">
-            <div v-bind:class="hoverClass" v-on:mouseover="mouse=true">
-                <p v-if="mouse=true">
-                    Hovering !
-                </p>
 
-                <p v-else>
-                    
-                </p>
+            <div class="light-container" v-bind:style="borders">
+                <div class="lightfill" v-show="lightState"></div>
+                <img v-bind:src="imglight" v-bind:width="lightWidth">
+                <input type="button" value="Switch light" v-on:click="lightState = !lightState">
             </div>
         </section>
     </div>
@@ -89,8 +86,11 @@
                         }
                     ],
                     clicks:0,
-                    hoverClass:"hover-section",
                     mouse:false,
+                    imglight: "img/lightBulb.svg",
+                    lightWidth:300,
+                    borders: "border: 1px dashed;",
+                    lightState:false
                 }
             }
         })
