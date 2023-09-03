@@ -34,7 +34,9 @@
         <section>
             <h2>For loop</h2>
             <ul>
-                <li v-for="x in people">{{x}}</li>
+                <li v-for="(x,index) in people">
+                    {{index}}: {{x}}
+                </li>
             </ul>
             <ul>
                 <li v-for="x in food">
