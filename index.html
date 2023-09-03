@@ -17,6 +17,15 @@
             </div>
         </section>
 
+        <section>
+            <h2>Ifs</h2>
+            <p v-if="gums<=3">
+                There's less than 3 gums left !
+            </p>
+            <p v-else>
+                there's more than 3 gums left !
+            </p>
+        </section>
     </div>
 
     <footer>
@@ -32,7 +41,8 @@
                     message: "Message showed successfully with Vue.js",
                     vueClass: "blue",
                     url:"img/vuejs-logo.png",
-                    icon:"100"
+                    icon:"100",
+                    gums:5,
                 }
             }
         })
