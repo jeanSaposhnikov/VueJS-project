@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <style>
+        .blue{
+            color: blue;
+        }
+    </style>
+<body id="app">
+    <p>{{message}}</p>
+    <p>This uses the <span v-bind:class="color">blue class</span></p>
+    <img v-bind:src="url" v-bind:width="width">
+    <p v-if="gums <=3">
+        {{"There's less than 3 gums left"}}
+    </p>
+    <p v-else>
+        {{"There's more than 3 gums left"}}
+    </p>
+
+    <h2 v-show="show">I'm I seen ?</h2>
+
+    <ul>
+        <li v-for="(x,index) in people">
+            {{index}}: {{x}}
+        </li>
+        
+    </ul>
+    <ul>
+        <li v-for="x in food">
+            {{"We need " + x.quantity+" " + x.fruit}}
+        </li>
+    </ul>
+
+    <p>Nb of times clicked : {{clicks}}</p>
+
+    <input v-on:click="clicks++" type="button" value="click me">
+
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    message: "message showed successfully with Vue.js",
+                    color:'blue',
+                    url:'img/vuejs-logo.png',
+                    width:60,
+                    gums:5,
+                    show:true,
+                    people: [
+                        "George","Michael","Gavin"
+                    ],
+                    food:[
+                        {
+                          fruit: "apples",
+                          quantity: 5  
+                        },
+                        {
+                            fruit: "oranges",
+                            quantity: 3
+                        }
+                    ],
+                    clicks:0
+                }
+            }
+        })
+
+        app.mount('#app')
+    </script>
+</body>
+</html>
