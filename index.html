@@ -55,6 +55,21 @@
                 <img v-bind:src="imglight" v-bind:width="lightWidth">
                 <input type="button" value="Switch light" v-on:click="lightState = !lightState">
             </div>
+
+            <div>
+                <input type="text" v-on:input="keys++">
+                <p>Input events occured: {{keys}}</p>
+            </div>
+
+            <div class="hover-section" v-bind:class="hoverClass" v-on:mousemove="mouse=true" v-on:mouseleave="mouse=false">
+                <p v-if="mouse==true">
+                    Hovering !
+                </p>
+
+                <p v-else>
+                    empty
+                </p>
+            </div>
         </section>
     </div>
 
@@ -90,7 +105,8 @@
                     imglight: "img/lightBulb.svg",
                     lightWidth:300,
                     borders: "border: 1px dashed;",
-                    lightState:false
+                    lightState:false,
+                    keys:0,
                 }
             }
         })
