@@ -26,6 +26,22 @@
                 there's more than 3 gums left !
             </p>
         </section>
+
+        <section>
+            <h2 v-show="check">Im i seen ?</h2>
+        </section>
+
+        <section>
+            <h2>For loop</h2>
+            <ul>
+                <li v-for="x in people">{{x}}</li>
+            </ul>
+            <ul>
+                <li v-for="x in food">
+                    {{"We need " + x.quantity + " "+ x.name}}
+                </li>
+            </ul>
+        </section>
     </div>
 
     <footer>
@@ -43,6 +59,18 @@
                     url:"img/vuejs-logo.png",
                     icon:"100",
                     gums:5,
+                    check:true,
+                    people:["George","Michael","Gavin"],
+                    food:[
+                        {
+                            name:"apples",
+                            quantity:5
+                        },
+                        {
+                            name:"oranges",
+                            quantity:3
+                        }
+                    ]
                 }
             }
         })
