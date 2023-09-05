@@ -80,21 +80,6 @@
                 <input v-on:click="fillText" type="button" value="Enter text below">
                 <p>{{txt}}</p>
 
-                <div id="cart">
-                    <div class="cheese">
-                        <p>Parmesan <span>(3.75)</span></p>
-                        <input v-on:click="parmesan[0].quantity--" type="button" value="-">
-                        <input v-on:click="parmesan[0].quantity++" type="button" value="+">
-                        <input type="number" :value="parmesan[0].quantity" min="0">
-                        <p>{{calculPrice(parmesan[0].quantity,parmesan[0].price)}}</p>
-                        <p>Cheddar <span>(1.50)</span></p>
-                        <input v-on:click="cheddar[0].quantity--" type="button" value="-">
-                        <input v-on:click="cheddar[0].quantity++" type="button" value="+">
-                        <input type="number" :value="cheddar[0].quantity" min="0">
-                        <p>{{calculPrice(cheddar[0].quantity, cheddar[0].price)}}</p>
-                        <p>Total : {{total}}</p>
-                    </div>
-                </div>
             </div>
         </section>
     </div>
@@ -137,24 +122,7 @@
                     txt: "",
                     count: 0,
                     red: "color: red;",
-                    parmesan:[
-                        {
-                            name:"Parmesan",
-                            price:3.75,
-                            quantity:0,
-                            total:this.price*this.quantity,
-                        }
-                    ],
-                    cheddar:[
-                        {
-                            name:"Cheddar",
-                            price:1.50,
-                            quantity:0,
-                            total:this.price*this.quantity,
-                        }
-                    ],
-                    
-                    total:0,
+     
 
                 }
             },
@@ -166,15 +134,6 @@
                 countKeys(){
                     this.count=document.querySelector("#keys-input").value.length;
                 },
-
-                calculPrice(price,quantity){
-                    return price*quantity;
-                },
-
-                totalPrice(){
-                  this.total=this.parmesan.price+this.cheddar.price;  
-                }
-
 
             }
         })
