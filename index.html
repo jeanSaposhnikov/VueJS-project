@@ -85,14 +85,14 @@
                         <p>Parmesan <span>(3.75)</span></p>
                         <input v-on:click="parmesan[0].quantity--" type="button" value="-">
                         <input v-on:click="parmesan[0].quantity++" type="button" value="+">
-                        <input type="number" :value="parmesan[0].quantity" min="0">
-                        <p>{{calculPrice(parmesan[0].quantity,parmesan[0].price)}}</p>
+                        <input type="number" :value="parmesan[0].quantity" min="0" v-on:change="calculPrice(parmesan[0].price,parmesan[0].quantity)">
+                        <p>{{parmesan[0].total}}</p>
                         <p>Cheddar <span>(1.50)</span></p>
                         <input v-on:click="cheddar[0].quantity--" type="button" value="-">
                         <input v-on:click="cheddar[0].quantity++" type="button" value="+">
                         <input type="number" :value="cheddar[0].quantity" min="0">
                         <p>{{calculPrice(cheddar[0].quantity, cheddar[0].price)}}</p>
-                        <p>Total : {{total}}</p>
+                        <p>Total : {{totalPrice()}}</p>
                     </div>
                 </div>
             </div>
@@ -142,7 +142,7 @@
                             name:"Parmesan",
                             price:3.75,
                             quantity:0,
-                            total:this.price*this.quantity,
+                            total:0,
                         }
                     ],
                     cheddar:[
@@ -150,7 +150,7 @@
                             name:"Cheddar",
                             price:1.50,
                             quantity:0,
-                            total:this.price*this.quantity,
+                            total:0,
                         }
                     ],
                     
@@ -168,11 +168,11 @@
                 },
 
                 calculPrice(price,quantity){
-                    return price*quantity;
+                    this.parmesan[0].total=price*quantity;
                 },
 
                 totalPrice(){
-                  this.total=this.parmesan.price+this.cheddar.price;  
+                  return this.parmesan[0].total+this.cheddar[0].total;  
                 }
 
 
