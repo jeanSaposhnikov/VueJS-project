@@ -59,8 +59,10 @@
             </div>
 
             <div>
-                <input type="text" v-on:input="keys++">
+                <input id="keys-input" type="text" v-on:input="keys++, countKeys()">
                 <p>Input events occured: {{keys}}</p>
+                <p>How many keys in the input : {{count}}</p>
+                <p v-show="count <= 0">There are <span v-bind:style="red">no keys</span> in the input !</p>
             </div>
 
             <div class="hover-section" v-bind:class="hoverClass" v-on:mousemove="mouse=true" v-on:mouseleave="mouse=false">
@@ -71,6 +73,12 @@
                 <p v-else>
                     empty
                 </p>
+            </div>
+
+            <div class="">
+                <h2>Methods</h2>
+                <input v-on:click="fillText" type="button" value="Enter text below">
+                <p>{{txt}}</p>
             </div>
         </section>
     </div>
@@ -110,10 +118,21 @@
                     lightState:false,
                     keys:0,
                     clickedFood:"",
+                    txt: "",
+                    count: 0,
+                    red: "color:red;",
+                }
+            },
+
+            methods: {
+                fillText(){
+                    this.txt="You filled it with text"
+                },
+                countKeys(){
+                    this.count=document.querySelector("#keys-input").value.length;
                 }
             }
         })
-
         app.mount('#app')
     </script>
 </body>
