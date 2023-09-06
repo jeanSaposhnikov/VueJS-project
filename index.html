@@ -79,8 +79,14 @@
                 <h2>Methods</h2>
                 <input v-on:click="fillText" type="button" value="Enter text below">
                 <p>{{txt}}</p>
-
             </div>
+
+            <h2>Modifiers</h2>
+            <input type="button" value="+" v-on:click.once="increment()">
+            <p>{{addition}}</p>
+            Key pressed :<input type="text" v-on:keydown="getKey">
+            <p>Key pressed {{key}}</p>
+            <p v-on:keydown.s="pressed()">Press S : {{pressed}}</p>
         </section>
     </div>
 
@@ -122,8 +128,9 @@
                     txt: "",
                     count: 0,
                     red: "color: red;",
-     
-
+                    addition:0,
+                    key:"",
+                    pressed:"",
                 }
             },
 
@@ -134,6 +141,15 @@
                 countKeys(){
                     this.count=document.querySelector("#keys-input").value.length;
                 },
+                increment(){
+                    this.addition++
+                },
+                getKey(evt){
+                    return this.key=evt.key;
+                },
+                pressed(){
+                    pressed= "Pressed !";
+                }
 
             }
         })
