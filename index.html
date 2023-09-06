@@ -2,15 +2,16 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
-    <body>
+    <body id="app">
         <h1>Shopping List</h1>
 
         <form>
             <p>What do you need?</p>
             <input type="text" placeholder="iten name">
             <p>How many?</p>
-            <input type="text" placeholder="number of items">
+            <input type="number" placeholder="number of items">
             <br><br>
             <input type="submit" value="Add item">
         </form>
@@ -21,5 +22,21 @@
 
             </ul>
         </div>
+
+        <script>
+            const app= Vue.createApp({
+                data(){
+                    items[
+                        {
+                            name: "",
+                            quantity: 0,
+                        }
+                    ]
+                },
+                methods: {
+
+                }
+            })
+        </script>
     </body>
 </html>
