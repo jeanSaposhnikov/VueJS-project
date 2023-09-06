@@ -1,48 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+    <body id="app">
+        <h1>Shopping List</h1>
 
-    <div id="app">
-        <!-- text interpolation -->
-        {{ message }}
+        <form>
+            <p>What do you need?</p>
+            <input type="text" placeholder="item name" v-model="name">
+            <p>How many?</p>
+            <input type="number" placeholder="number of items" v-model="number">
+            <br><br>
+            <input type="button" value="Add item" v-on:click="addition(name,number)">
+        </form>
 
-        <section>
-            <h2>Directives</h2>
-            <div>
-                <p>This uses the <span v-bind:class="vueClass">blue class</span> V</p>
-                <img v-bind:src="url" v-bind:width="icon">
-            </div>
-        </section>
-
-        <section>
-            <h2>Ifs</h2>
-            <p v-if="gums<=3">
-                There's less than 3 gums left !
-            </p>
-            <p v-else>
-                there's more than 3 gums left !
-            </p>
-        </section>
-
-        <section>
-            <h2 v-show="check">Im i seen ?</h2>
-        </section>
-
-        <section>
-            <h2>For loop</h2>
+        <div id="shopping-list">
+            <p>Shopping list:</p>
             <ul>
-                <li v-for="(x,index) in people">
-                    {{index}}: {{x}}
-                </li>
+                <li v-for="x in items">{{x.name + " " + x.quantity}}</li>
             </ul>
-            <ul>
-                <li v-for="x in food" v-on:click="clickedFood=x.name">
-                    {{"We need " + x.quantity + " "+ x.name}}
-                </li>
+        </div>
 
+<<<<<<< HEAD
                 <p>You clicked on {{clickedFood}}</p>
             </ul>
         </section>
@@ -156,9 +137,32 @@
                     
                     total:0,
 
+=======
+        <script>
+            const app = Vue.createApp({
+                data(){
+                    return{
+                        items:[
+                            {
+                                name:"",
+                                quantity:0,
+                            }
+                        ]
+                    }
+                },
+                methods: {
+                    addition(name,number) {
+                        item={
+                            name: name,
+                            quantity: number
+                        }
+                        this.items.push(item);
+                    }
+>>>>>>> 6d7a541aeb4781a99663500645357423b0cd461d
                 }
-            },
+            })
 
+<<<<<<< HEAD
             methods: {
                 fillText(){
                     this.txt="You filled it with text"
@@ -181,4 +185,9 @@
         app.mount('#app')
     </script>
 </body>
+=======
+            app.mount("#app")
+        </script>
+    </body>
+>>>>>>> 6d7a541aeb4781a99663500645357423b0cd461d
 </html>

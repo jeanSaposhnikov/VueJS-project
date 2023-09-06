@@ -1,32 +1,4 @@
-.blue{
-    color: blue;
-}
-
-.hover-section{
-    border: 1px solid;
-    padding: 45px;
-}
-
-.light-container{
-    position: relative;
-    max-width: 300px;
-}
-
-.lightfill{
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    background-color: yellow;
-}
-
-.light-container img{
-    z-index: 2;
-    position: relative;
-}
-
-.light-container input{
-    z-index: 2;
-    position: relative;
+form{
+    padding: 5px;
+    border: 1px dotted black;
 }
