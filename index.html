@@ -9,34 +9,44 @@
 
         <form>
             <p>What do you need?</p>
-            <input type="text" placeholder="iten name">
+            <input type="text" placeholder="item name" v-model="name">
             <p>How many?</p>
-            <input type="number" placeholder="number of items">
+            <input type="number" placeholder="number of items" v-model="number">
             <br><br>
-            <input type="submit" value="Add item">
+            <input type="button" value="Add item" v-on:click="addition(name,number)">
         </form>
 
         <div id="shopping-list">
             <p>Shopping list:</p>
             <ul>
-
+                <li v-for="x in items">{{x.name + " " + x.quantity}}</li>
             </ul>
         </div>
 
         <script>
-            const app= Vue.createApp({
+            const app = Vue.createApp({
                 data(){
-                    items[
-                        {
-                            name: "",
-                            quantity: 0,
-                        }
-                    ]
+                    return{
+                        items:[
+                            {
+                                name:"",
+                                quantity:0,
+                            }
+                        ]
+                    }
                 },
                 methods: {
-
+                    addition(name,number) {
+                        item={
+                            name: name,
+                            quantity: number
+                        }
+                        this.items.push(item);
+                    }
                 }
             })
+
+            app.mount("#app")
         </script>
     </body>
 </html>
