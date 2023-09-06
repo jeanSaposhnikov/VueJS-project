@@ -11,7 +11,7 @@
             <p>What do you need?</p>
             <input type="text" placeholder="item name" v-model="name">
             <p>How many?</p>
-            <input type="number" placeholder="number of items" v-model="number">
+            <input type="number" placeholder="number of items" v-model="number" min="0" v-on:keydown.-="validateNumber(number,$event)">
             <br><br>
             <input type="button" value="Add item" v-on:click="addition(name,number)">
         </form>
@@ -28,7 +28,7 @@
                 data(){
                     return{
                         items:[
-                  
+                            
                         ]
                     }
                 },
@@ -39,6 +39,10 @@
                             quantity: number
                         }
                         this.items.push(item);
+                    },
+
+                    validateNumber(number,evt){
+                       evt.preventDefault();
                     }
                 }
             })
