@@ -19,7 +19,7 @@
         <div id="shopping-list">
             <p>Shopping list:</p>
             <ul>
-                <li v-if="items[0]" v-for="x in items">{{x.name + " " + x.quantity}}</li>
+                <li v-if="items[0]" v-for="x in items">{{x.name + " " + x.quantity}} <span v-on:click="deleteItem(x.name)">delete</span></li>
             </ul>
         </div>
 
@@ -34,17 +34,23 @@
                 },
                 methods: {
                     addition(name,number) {
-                        item={
+                        if(name != "" && number != "" && name != undefined && number != undefined){
+                            item={
                             name: name,
                             quantity: number
+                            }
+                            this.items.push(item);
+                            this.name="";
+                            this.number="";
                         }
-                        this.items.push(item);
-                        this.name="";
-                        this.number="";
                     },
 
                     validateNumber(number,evt){
                        evt.preventDefault();
+                    },
+
+                    deleteItem(item){
+                       
                     }
                 }
             })
