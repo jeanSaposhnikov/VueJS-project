@@ -19,134 +19,16 @@
         <div id="shopping-list">
             <p>Shopping list:</p>
             <ul>
-                <li v-for="x in items">{{x.name + " " + x.quantity}}</li>
+                <li v-if="items[0]" v-for="x in items">{{x.name + " " + x.quantity}}</li>
             </ul>
         </div>
 
-<<<<<<< HEAD
-                <p>You clicked on {{clickedFood}}</p>
-            </ul>
-        </section>
-
-        <section>
-            <h2>Events</h2>
-            <p>Nb of times clicked : {{clicks}}</p>
-            <input type="button" v-on:click="clicks++" value="click me">
-
-            <div class="light-container" v-bind:style="borders">
-                <div class="lightfill" v-show="lightState"></div>
-                <img v-bind:src="imglight" v-bind:width="lightWidth">
-                <input type="button" value="Switch light" v-on:click="lightState = !lightState">
-            </div>
-
-            <div>
-                <input id="keys-input" type="text" v-on:input="keys++, countKeys()">
-                <p>Input events occured: {{keys}}</p>
-                <p>How many keys in the input : {{count}}</p>
-                <p v-show="count <= 0">There are <span v-bind:style="red">no keys</span> in the input !</p>
-            </div>
-
-            <div class="hover-section" v-bind:class="hoverClass" v-on:mousemove="mouse=true" v-on:mouseleave="mouse=false">
-                <p v-if="mouse==true">
-                    Hovering !
-                </p>
-
-                <p v-else>
-                    empty
-                </p>
-            </div>
-
-            <div class="">
-                <h2>Methods</h2>
-                <input v-on:click="fillText" type="button" value="Enter text below">
-                <p>{{txt}}</p>
-
-                <div id="cart">
-                    <div class="cheese">
-                        <p>Parmesan <span>(3.75)</span></p>
-                        <input v-on:click="parmesan[0].quantity--" type="button" value="-">
-                        <input v-on:click="parmesan[0].quantity++" type="button" value="+">
-                        <input type="number" :value="parmesan[0].quantity" min="0" v-on:change="calculPrice(parmesan[0].price,parmesan[0].quantity)">
-                        <p>{{parmesan[0].total}}</p>
-                        <p>Cheddar <span>(1.50)</span></p>
-                        <input v-on:click="cheddar[0].quantity--" type="button" value="-">
-                        <input v-on:click="cheddar[0].quantity++" type="button" value="+">
-                        <input type="number" :value="cheddar[0].quantity" min="0">
-                        <p>{{calculPrice(cheddar[0].quantity, cheddar[0].price)}}</p>
-                        <p>Total : {{totalPrice()}}</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <footer>
-
-    </footer>
-
-    <!-- Lets browser interpret VUE code -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <script>
-        const app= Vue.createApp({
-            data() {
-                return {
-                    message: "Message showed successfully with Vue.js",
-                    vueClass: "blue",
-                    url:"img/vuejs-logo.png",
-                    icon:"100",
-                    gums:5,
-                    check:true,
-                    people:["George","Michael","Gavin"],
-                    food:[
-                        {
-                            name:"apples",
-                            quantity:5
-                        },
-                        {
-                            name:"oranges",
-                            quantity:3
-                        }
-                    ],
-                    clicks:0,
-                    mouse:false,
-                    imglight: "img/lightBulb.svg",
-                    lightWidth:300,
-                    borders: "border: 1px dashed;",
-                    lightState:false,
-                    keys:0,
-                    clickedFood:"",
-                    txt: "",
-                    count: 0,
-                    red: "color: red;",
-                    parmesan:[
-                        {
-                            name:"Parmesan",
-                            price:3.75,
-                            quantity:0,
-                            total:0,
-                        }
-                    ],
-                    cheddar:[
-                        {
-                            name:"Cheddar",
-                            price:1.50,
-                            quantity:0,
-                            total:0,
-                        }
-                    ],
-                    
-                    total:0,
-
-=======
         <script>
             const app = Vue.createApp({
                 data(){
                     return{
                         items:[
-                            {
-                                name:"",
-                                quantity:0,
-                            }
+                  
                         ]
                     }
                 },
@@ -158,36 +40,10 @@
                         }
                         this.items.push(item);
                     }
->>>>>>> 6d7a541aeb4781a99663500645357423b0cd461d
                 }
             })
 
-<<<<<<< HEAD
-            methods: {
-                fillText(){
-                    this.txt="You filled it with text"
-                },
-                countKeys(){
-                    this.count=document.querySelector("#keys-input").value.length;
-                },
-
-                calculPrice(price,quantity){
-                    this.parmesan[0].total=price*quantity;
-                },
-
-                totalPrice(){
-                  return this.parmesan[0].total+this.cheddar[0].total;  
-                }
-
-
-            }
-        })
-        app.mount('#app')
-    </script>
-</body>
-=======
             app.mount("#app")
         </script>
     </body>
->>>>>>> 6d7a541aeb4781a99663500645357423b0cd461d
 </html>
