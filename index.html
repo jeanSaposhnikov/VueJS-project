@@ -3,23 +3,29 @@
     <head>
         <link rel="stylesheet" href="css/style.css">
         <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <style>
+            .red{
+                background-color: rgb(255, 202, 202);
+            }
+        </style>
     </head>
     <body id="app">
-        <h1>Shopping List</h1>
+        <h1>Mark found items</h1>
 
         <form>
             <p>What do you need?</p>
             <input type="text" placeholder="item name" v-model="name">
             <p>How many?</p>
-            <input type="number" placeholder="number of items" v-model="number" min="0" v-on:keydown.-="validateNumber(number,$event)">
+            <input type="number" placeholder="number of items" v-model="quantity" min="0" v-on:keydown.-="validateNumber(number,$event)">
+            <span>Important</span> <label for="important"> <input id="important" type="checkbox" name="important" v-model="important"></label>
             <br><br>
-            <input type="button" value="Add item" v-on:click="addition(name,number)">
+            <input type="button" value="Add item" v-on:click="addItem(name,quantity,important)">
         </form>
-
+        <br>
         <div id="shopping-list">
-            <p>Shopping list:</p>
+            <strong>Shopping list:</strong>
             <ul>
-                <li v-if="items[0]" v-for="x in items">{{x.name + " " + x.quantity}} <span v-on:click="deleteItem(x.name)">delete</span></li>
+                <li v-bind:class="{ red: item.important }"  v-for="x in items">{{x.name + " " + x.quantity}}</li>
             </ul>
         </div>
 
@@ -27,30 +33,25 @@
             const app = Vue.createApp({
                 data(){
                     return{
+                        important:false,
                         items:[
                             
                         ]
                     }
                 },
                 methods: {
-                    addition(name,number) {
-                        if(name != "" && number != "" && name != undefined && number != undefined){
-                            item={
-                            name: name,
-                            quantity: number
+                    addItem(name,quantity,important){
+                        if(name != "" && quantity != "" && name != undefined && quantity != undefined) {
+                            item= {
+                                    name: name,
+                                    quantity: quantity,
+                                    important:important
                             }
                             this.items.push(item);
                             this.name="";
-                            this.number="";
+                            this.quantity="";
+                            this.important=false;
                         }
-                    },
-
-                    validateNumber(number,evt){
-                       evt.preventDefault();
-                    },
-
-                    deleteItem(item){
-                       
                     }
                 }
             })
