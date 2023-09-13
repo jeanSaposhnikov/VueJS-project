@@ -25,7 +25,7 @@
         <div id="shopping-list">
             <strong>Shopping list:</strong>
             <ul>
-                <li v-bind:class="{ red: item.important }"  v-for="x in items">{{x.name + " " + x.quantity}}</li>
+                <li v-bind:class="{ red: x.important }"  v-for="x in items">{{x.name + " " + x.quantity}}</li>
             </ul>
         </div>
 
@@ -45,7 +45,7 @@
                             item= {
                                     name: name,
                                     quantity: quantity,
-                                    important:important
+                                    important: important,
                             }
                             this.items.push(item);
                             this.name="";
