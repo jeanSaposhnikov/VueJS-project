@@ -16,7 +16,7 @@
             <p>What do you need?</p>
             <input type="text" placeholder="item name" v-model="name">
             <p>How many?</p>
-            <input type="number" placeholder="number of items" v-model="quantity" min="0" v-on:keydown.-="validateNumber(number,$event)">
+            <input type="number" placeholder="number of items" v-model="quantity" min="0">
             <span>Important</span> <label for="important"> <input id="important" type="checkbox" name="important" v-model="important"></label>
             <br><br>
             <input type="button" value="Add item" v-on:click="addItem(name,quantity,important)">
@@ -41,7 +41,7 @@
                 },
                 methods: {
                     addItem(name,quantity,important){
-                        if(name != "" && quantity != "" && name != undefined && quantity != undefined) {
+                        if(name !== "" && quantity !== "" && name !== undefined && quantity !== undefined) {
                             item= {
                                     name: name,
                                     quantity: quantity,
